@@ -1,0 +1,8 @@
+node_modules/
+dist/
+devserver.*.log
+screenshot-*.png
+.edge-debug-profile/
+.DS_Store
+*.local
+*.log
