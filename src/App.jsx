@@ -94,7 +94,7 @@ function Hero() {
           </div>
         </div>
         <div className="hero-image">
-          <img src="/images/hero.png" alt="Happy Indian children celebrating a rainy holiday" />
+          <img src={`${import.meta.env.BASE_URL}images/hero.png`} alt="Happy Indian children celebrating a rainy holiday" />
         </div>
       </div>
     </section>
@@ -214,7 +214,7 @@ function Demo() {
     <section className="demo" id="demo">
       <div className="demo-container">
         <div className="demo-phone">
-          <img src="/images/phone-mockup.png" alt="FreeDay WhatsApp alert on phone" />
+          <img src={`${import.meta.env.BASE_URL}images/phone-mockup.png`} alt="FreeDay WhatsApp alert on phone" />
         </div>
         <div className="demo-text">
           <span className="section-tag">📱 WhatsApp Alert</span>
