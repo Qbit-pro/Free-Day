@@ -303,37 +303,40 @@ function Subscribe() {
         <p>Enter your WhatsApp number and never miss a rain holiday again.</p>
       </div>
       {!submitted ? (
-        <form onSubmit={handleSubmit} style={{
-          display: 'flex',
-          gap: '12px',
-          maxWidth: '480px',
-          margin: '0 auto',
-          flexWrap: 'wrap',
-          justifyContent: 'center'
-        }}>
-          <input
-            type="tel"
-            placeholder="Your WhatsApp number"
-            value={phone}
-            onChange={e => setPhone(e.target.value)}
-            id="subscribe-phone"
-            style={{
-              flex: 1,
-              minWidth: '240px',
-              padding: '16px 24px',
-              borderRadius: '50px',
-              border: '1px solid rgba(14, 165, 233, 0.2)',
-              background: 'rgba(14, 165, 233, 0.05)',
-              color: '#f1f5f9',
-              fontSize: '1rem',
-              fontFamily: 'Outfit, sans-serif',
-              outline: 'none',
-            }}
-          />
-          <button type="submit" className="btn-primary" id="subscribe-btn">
-            📱 Subscribe
-          </button>
-        </form>
+        <div style={{ maxWidth: '480px', margin: '0 auto' }}>
+          <form onSubmit={handleSubmit} style={{
+            display: 'flex',
+            gap: '12px',
+            flexWrap: 'wrap',
+            justifyContent: 'center'
+          }}>
+            <input
+              type="tel"
+              placeholder="Your WhatsApp number"
+              value={phone}
+              onChange={e => setPhone(e.target.value)}
+              id="subscribe-phone"
+              style={{
+                flex: 1,
+                minWidth: '240px',
+                padding: '16px 24px',
+                borderRadius: '50px',
+                border: '1px solid rgba(14, 165, 233, 0.2)',
+                background: 'rgba(14, 165, 233, 0.05)',
+                color: '#f1f5f9',
+                fontSize: '1rem',
+                fontFamily: 'Outfit, sans-serif',
+                outline: 'none',
+              }}
+            />
+            <button type="submit" className="btn-primary" id="subscribe-btn">
+              📱 Subscribe
+            </button>
+          </form>
+          <p style={{ marginTop: '16px', fontSize: '0.85rem', color: '#94a3b8', lineHeight: '1.4' }}>
+            By subscribing, you agree to receive automated WhatsApp holiday alerts from FreeDay. You can opt out at any time by replying STOP.
+          </p>
+        </div>
       ) : (
         <div style={{
           padding: '24px',
@@ -368,7 +371,8 @@ function Footer() {
         <div className="footer-links">
           <a href="#features">Features</a>
           <a href="#pricing">Pricing</a>
-          <a href="#">Privacy</a>
+          <a href="mailto:support@freeday.in">Contact: support@freeday.in</a>
+          <a href="#privacy">Privacy Policy</a>
         </div>
       </div>
     </footer>
