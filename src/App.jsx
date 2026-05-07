@@ -371,7 +371,7 @@ function Footer() {
         <div className="footer-links">
           <a href="#features">Features</a>
           <a href="#pricing">Pricing</a>
-          <a href="mailto:support@freeday.in">Contact: support@freeday.in</a>
+          <a href="mailto:freeday.updates@gmail.com">Contact: freeday.updates@gmail.com</a>
           <a href="#privacy">Privacy Policy</a>
         </div>
       </div>
