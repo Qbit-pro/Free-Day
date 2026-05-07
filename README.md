@@ -1,16 +1,66 @@
-# React + Vite
+# 🏫 HolidayAlert TN — School Holiday Detection System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An AI-powered system that monitors Tamil Nadu & Puducherry news channels , uses OCR to detect school holiday announcements, and sends instant WhatsApp/call notifications to registered parents and students.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🌍 Expanding to New States
 
-## React Compiler
+The OCR models for 8 languages are already downloaded. To add a new state:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. **Add channels** to `CHANNEL_MAP` in `index.js`
+2. **Add language** to `LANGUAGE_MAP` in `index.js`:
+   ```js
+   'Kerala': 'mal+eng',
+   'Karnataka': 'kan+eng',
+   'Delhi': 'hin+eng'
+   ```
+3. **Add districts** to `districts.js`
+4. **Add state keywords** to `STATE_WIDE_KEYWORDS` in `filterConfig.js`
 
-## Expanding the ESLint configuration
+That's it. The entire pipeline (OCR → AI → alert) works automatically.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🚨 Troubleshooting
+
+### Service won't start
+```
+❌ CRITICAL ERROR: Missing MongoDB URI
+```
+→ Check your `.env` file has `MONGO_URI` set correctly.
+
+### ffmpeg fails to start
+```
+❌ [Thanthi TV] ffmpeg: ...
+```
+→ Ensure `ffmpeg` is installed and in your system PATH.
+→ On Windows: `winget install ffmpeg`
+→ On Linux: `sudo apt install ffmpeg`
+
+---
+
+### yt-dlp timeout or stream URL failed
+```
+❌ [Thanthi TV] yt-dlp failed...
+```
+→ YouTube changed their player. Update yt-dlp:
+→ `pip install -U yt-dlp`
+
+---
+
+### OCR worker times out
+```
+❌ [Thanthi TV] OCR Worker Timed Out
+```
+→ First-time OCR initialization can take 2–3 minutes. This is normal. Wait and it will recover.
+
+---
+
+## 📞 Support
+
+For issues, open a GitHub issue or check the MongoDB logs first — they contain the full OCR + AI audit trail.
+
+---
+
+*Built to give Tamil Nadu parents peace of mind — alerts before TV, verified by AI.* 🙏
