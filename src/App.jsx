@@ -379,18 +379,60 @@ function Footer() {
   )
 }
 
+// Privacy Policy
+function PrivacyPolicy() {
+  return (
+    <section style={{ padding: '120px 24px 60px', maxWidth: '800px', margin: '0 auto', textAlign: 'left', lineHeight: '1.7' }}>
+      <h1 style={{ fontSize: '2.5rem', marginBottom: '8px', color: '#f1f5f9' }}>Privacy Policy</h1>
+      <p style={{ color: '#94a3b8', marginBottom: '40px' }}>Last updated: May 2026</p>
+      
+      <h2 style={{ color: '#e0f2fe', marginTop: '32px', marginBottom: '16px' }}>1. Introduction</h2>
+      <p style={{ color: '#cbd5e1' }}>Welcome to FreeDay Alerts. We are committed to protecting your privacy and ensuring your data is handled securely. This Privacy Policy explains how we collect, use, and protect your information when you use our WhatsApp holiday notification service.</p>
+      
+      <h2 style={{ color: '#e0f2fe', marginTop: '32px', marginBottom: '16px' }}>2. Information We Collect</h2>
+      <p style={{ color: '#cbd5e1' }}>When you subscribe to our service, we collect your WhatsApp phone number. We do not collect any other personally identifiable information without your explicit consent.</p>
+
+      <h2 style={{ color: '#e0f2fe', marginTop: '32px', marginBottom: '16px' }}>3. How We Use Your Information</h2>
+      <p style={{ color: '#cbd5e1' }}>Your phone number is used exclusively to send automated WhatsApp messages regarding school holiday announcements due to rain or other local events. We do not use your number for marketing unrelated products, and we absolutely do not sell or rent your data to third parties.</p>
+
+      <h2 style={{ color: '#e0f2fe', marginTop: '32px', marginBottom: '16px' }}>4. Data Processing and Meta</h2>
+      <p style={{ color: '#cbd5e1' }}>Because our service relies on the WhatsApp Business API, your messages and interactions are processed through Meta's infrastructure. By using FreeDay, you acknowledge that message delivery is subject to the <a href="https://www.whatsapp.com/legal/business-policy/" style={{ color: '#38bdf8', textDecoration: 'none' }} target="_blank" rel="noreferrer">WhatsApp Business Policy</a>.</p>
+
+      <h2 style={{ color: '#e0f2fe', marginTop: '32px', marginBottom: '16px' }}>5. Your Rights and Opting Out</h2>
+      <p style={{ color: '#cbd5e1' }}>You have the right to withdraw your consent at any time. You can instantly opt out of receiving further alerts by replying with the word <strong>STOP</strong> to any of our WhatsApp messages. Upon opting out, your number will be permanently removed from our active notification list.</p>
+
+      <h2 style={{ color: '#e0f2fe', marginTop: '32px', marginBottom: '16px' }}>6. Contact Us</h2>
+      <p style={{ color: '#cbd5e1' }}>If you have any questions or concerns about this Privacy Policy or how your data is handled, please contact us at: <a href="mailto:freeday.updates@gmail.com" style={{ color: '#38bdf8', textDecoration: 'none' }}>freeday.updates@gmail.com</a></p>
+    </section>
+  )
+}
+
 // Main App
 function App() {
+  const [currentPath, setCurrentPath] = useState(window.location.hash);
+
+  useEffect(() => {
+    const onHashChange = () => setCurrentPath(window.location.hash);
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
+
   return (
     <>
       <RainEffect />
       <Navbar />
-      <Hero />
-      <Features />
-      <HowItWorks />
-      <Demo />
-      <Pricing />
-      <Subscribe />
+      {currentPath === '#privacy' ? (
+        <PrivacyPolicy />
+      ) : (
+        <>
+          <Hero />
+          <Features />
+          <HowItWorks />
+          <Demo />
+          <Pricing />
+          <Subscribe />
+        </>
+      )}
       <Footer />
     </>
   )
